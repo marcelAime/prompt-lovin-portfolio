@@ -191,25 +191,6 @@ const Contact = () => {
                   </a>
                 </EnhancedButton>
 
-                <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Calendar className="w-5 h-5 text-blue-600" />
-                    <span className="font-medium text-blue-900">Prise de rendez-vous</span>
-                  </div>
-                  <p className="text-sm text-blue-700 mb-3">
-                    Planifiez un appel ou une réunion directement avec Marcel pour discuter de vos projets.
-                  </p>
-                  <EnhancedButton variant="hero" size="sm" className="w-full" asChild>
-                    <a 
-                      href="https://calendly.com/assouhoaime" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                    >
-                      <Calendar className="w-4 h-4" />
-                      Prendre rendez-vous
-                    </a>
-                  </EnhancedButton>
-                </div>
               </CardContent>
             </Card>
           </div>
