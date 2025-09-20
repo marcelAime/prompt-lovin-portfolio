@@ -1,0 +1,63 @@
+import { useEffect } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Calendar } from "lucide-react";
+
+const CalendlyWidget = () => {
+  useEffect(() => {
+    // Charger le script Calendly si pas déjà chargé
+    if (!document.querySelector('script[src*="calendly.com"]')) {
+      const script = document.createElement('script');
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.async = true;
+      document.head.appendChild(script);
+    }
+  }, []);
+
+  return (
+    <section id="calendly" className="py-20 bg-accent/20">
+      <div className="container mx-auto px-4">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-4">
+            <Calendar className="w-5 h-5" />
+            <span className="font-medium">Prise de rendez-vous</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            Planifiez un 
+            <span className="text-gradient"> Rendez-vous</span>
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Choisissez un créneau qui vous convient pour discuter de vos projets et besoins directement avec Marcel.
+          </p>
+        </div>
+
+        {/* Widget Calendly */}
+        <div className="max-w-4xl mx-auto">
+          <Card className="shadow-elegant border border-border/50 overflow-hidden">
+            <CardHeader className="text-center">
+              <CardTitle className="text-2xl">Réservez votre consultation</CardTitle>
+            </CardHeader>
+            <CardContent className="p-0">
+              {/* Fragment HTML Calendly - Remplacez l'URL par la vôtre */}
+              <div 
+                className="calendly-inline-widget" 
+                data-url="https://calendly.com/assouhoaime" 
+                style={{ minWidth: '320px', height: '700px' }}
+                data-processed="true"
+              />
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Instructions pour personnaliser */}
+        <div className="mt-8 text-center">
+          <p className="text-sm text-muted-foreground">
+            💡 <strong>Pour personnaliser :</strong> Remplacez l'URL dans <code>data-url</code> par votre lien Calendly personnel
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default CalendlyWidget;

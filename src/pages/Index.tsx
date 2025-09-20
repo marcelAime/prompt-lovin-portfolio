@@ -4,6 +4,7 @@ import Formation from "@/components/Formation";
 import Competences from "@/components/Competences";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
+import CalendlyWidget from "@/components/CalendlyWidget";
 import Footer from "@/components/Footer";
 import { lazy, Suspense } from "react";
 
@@ -18,6 +19,7 @@ const Index = () => {
       <Competences />
       <Experience />
       <Contact />
+      <CalendlyWidget />
       <Footer />
       <Suspense fallback={null}>
         <Chatbot />
