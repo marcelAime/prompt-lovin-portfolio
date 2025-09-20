@@ -1,29 +1,7 @@
-import { useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar } from "lucide-react";
 
 const CalendlyWidget = () => {
-  useEffect(() => {
-    // Charger le script Calendly de manière simple
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://assets.calendly.com/assets/external/widget.js';
-    script.async = true;
-    
-    // Vérifier si le script n'est pas déjà présent
-    if (!document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]')) {
-      document.body.appendChild(script);
-    }
-    
-    return () => {
-      // Nettoyer le script si nécessaire
-      const existingScript = document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]');
-      if (existingScript && existingScript.parentNode) {
-        existingScript.parentNode.removeChild(existingScript);
-      }
-    };
-  }, []);
-
   return (
     <section id="calendly" className="py-20 bg-accent/20">
       <div className="container mx-auto px-4">
@@ -49,13 +27,16 @@ const CalendlyWidget = () => {
               <CardTitle className="text-2xl">Réservez votre consultation</CardTitle>
             </CardHeader>
             <CardContent className="p-0">
-              {/* Calendly inline widget begin */}
-              <div 
-                className="calendly-inline-widget" 
-                data-url="https://calendly.com/assouhoaime" 
-                style={{ minWidth: '320px', height: '700px' }}
+              {/* Iframe Calendly - Plus fiable que le widget inline */}
+              <iframe
+                src="https://calendly.com/assouhoaime"
+                width="100%"
+                height="700"
+                frameBorder="0"
+                title="Calendly - Assouho Aimé Pierre Marcel"
+                style={{ minWidth: '320px' }}
+                className="w-full"
               />
-              {/* Calendly inline widget end */}
             </CardContent>
           </Card>
         </div>
@@ -63,7 +44,7 @@ const CalendlyWidget = () => {
         {/* Instructions pour personnaliser */}
         <div className="mt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            💡 <strong>Pour personnaliser :</strong> Remplacez l'URL dans <code>data-url</code> par votre lien Calendly personnel
+            💡 <strong>Pour personnaliser :</strong> Remplacez l'URL dans <code>src</code> par votre lien Calendly personnel
           </p>
         </div>
       </div>
