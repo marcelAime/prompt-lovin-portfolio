@@ -38,13 +38,13 @@ const CalendlyWidget = () => {
               <CardTitle className="text-2xl">Réservez votre consultation</CardTitle>
             </CardHeader>
             <CardContent className="p-0">
-              {/* Fragment HTML Calendly - Remplacez l'URL par la vôtre */}
+              {/* Calendly inline widget begin */}
               <div 
                 className="calendly-inline-widget" 
                 data-url="https://calendly.com/assouhoaime" 
                 style={{ minWidth: '320px', height: '700px' }}
-                data-processed="true"
               />
+              {/* Calendly inline widget end */}
             </CardContent>
           </Card>
         </div>
