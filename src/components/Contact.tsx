@@ -125,12 +125,6 @@ const Contact = () => {
                 </EnhancedButton>
               </form>
 
-              {/* Note about Supabase */}
-              <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
-                <p className="text-sm text-amber-800">
-                  <strong>Note:</strong> Pour que le formulaire fonctionne complètement, il faut connecter ce projet à Supabase pour la gestion des données.
-                </p>
-              </div>
             </CardContent>
           </Card>
 
@@ -203,11 +197,17 @@ const Contact = () => {
                     <span className="font-medium text-blue-900">Prise de rendez-vous</span>
                   </div>
                   <p className="text-sm text-blue-700 mb-3">
-                    Pour intégrer Calendly et permettre la prise de rendez-vous automatique, il faut configurer l'API Calendly.
+                    Planifiez un appel ou une réunion directement avec Marcel pour discuter de vos projets.
                   </p>
-                  <EnhancedButton variant="outline" size="sm" className="w-full" disabled>
-                    <Calendar className="w-4 h-4" />
-                    Prendre rendez-vous (Bientôt disponible)
+                  <EnhancedButton variant="hero" size="sm" className="w-full" asChild>
+                    <a 
+                      href="https://calendly.com/assouhoaime" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      <Calendar className="w-4 h-4" />
+                      Prendre rendez-vous
+                    </a>
                   </EnhancedButton>
                 </div>
               </CardContent>
