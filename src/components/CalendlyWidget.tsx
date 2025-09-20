@@ -5,11 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useToast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 
 const CalendlyWidget = () => {
-  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,50 +23,61 @@ const CalendlyWidget = () => {
     
     // Validation simple
     if (!formData.name || !formData.email || !formData.date || !formData.time) {
-      toast({
-        title: "Erreur",
-        description: "Veuillez remplir tous les champs obligatoires",
-        variant: "destructive"
-      });
+      toast.error("Veuillez remplir tous les champs obligatoires");
       return;
     }
 
-    // Créer le message WhatsApp/Email avec les détails
-    const message = `Nouvelle demande de rendez-vous:
-Nom: ${formData.name}
-Email: ${formData.email}
-Téléphone: ${formData.phone}
-Date souhaitée: ${formData.date}
-Heure souhaitée: ${formData.time}
-Service: ${formData.service}
-Message: ${formData.message}`;
+    // Créer le message WhatsApp avec les détails
+    const message = `🗓️ *Nouvelle demande de rendez-vous*
 
+👤 *Nom:* ${formData.name}
+📧 *Email:* ${formData.email}
+📱 *Téléphone:* ${formData.phone || 'Non renseigné'}
+📅 *Date souhaitée:* ${formData.date}
+⏰ *Heure:* ${formData.time}
+🔧 *Service:* ${formData.service || 'Non spécifié'}
+💬 *Message:* ${formData.message || 'Aucun message'}
+
+Merci de confirmer ce rendez-vous !`;
+
+    // Créer l'URL WhatsApp avec le message
     const whatsappUrl = `https://wa.me/2250747783618?text=${encodeURIComponent(message)}`;
-    const emailUrl = `mailto:assouhoaime@gmail.com?subject=Demande de rendez-vous&body=${encodeURIComponent(message)}`;
     
-    // Ouvrir WhatsApp pour confirmer le rendez-vous
-    window.open(whatsappUrl, '_blank');
+    // Ouvrir WhatsApp dans un nouvel onglet
+    const newWindow = window.open(whatsappUrl, '_blank');
     
-    toast({
-      title: "Demande envoyée !",
-      description: "Votre demande de rendez-vous a été envoyée via WhatsApp. Marcel vous confirmera rapidement.",
-    });
-
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      date: '',
-      time: '',
-      service: '',
-      message: ''
-    });
+    if (newWindow) {
+      toast.success("Redirection vers WhatsApp... Marcel vous confirmera rapidement !");
+      
+      // Reset form après succès
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        date: '',
+        time: '',
+        service: '',
+        message: ''
+      });
+    } else {
+      toast.error("Impossible d'ouvrir WhatsApp. Veuillez vérifier les paramètres de votre navigateur.");
+    }
   };
 
   const handleChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
+
+  const timeSlots = [
+    "09:00", "10:00", "11:00", "14:00", "15:00", "16:00", "17:00"
+  ];
+
+  const services = [
+    { value: "development", label: "Développement Web/Mobile" },
+    { value: "data-analysis", label: "Analyse de données" },
+    { value: "consulting", label: "Conseil en informatique" },
+    { value: "other", label: "Autre" }
+  ];
 
   return (
     <section id="calendly" className="py-20 bg-accent/20">
@@ -84,7 +93,7 @@ Message: ${formData.message}`;
             <span className="text-gradient"> Rendez-vous</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Remplissez le formulaire ci-dessous pour réserver votre consultation avec Marcel.
+            Remplissez le formulaire ci-dessous. Votre demande sera envoyée via WhatsApp pour confirmation.
           </p>
         </div>
 
@@ -164,37 +173,35 @@ Message: ${formData.message}`;
                       <Clock className="w-4 h-4" />
                       Heure préférée *
                     </Label>
-                    <Select value={formData.time} onValueChange={(value) => handleChange('time', value)}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Choisir l'heure" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="09:00">09:00</SelectItem>
-                        <SelectItem value="10:00">10:00</SelectItem>
-                        <SelectItem value="11:00">11:00</SelectItem>
-                        <SelectItem value="14:00">14:00</SelectItem>
-                        <SelectItem value="15:00">15:00</SelectItem>
-                        <SelectItem value="16:00">16:00</SelectItem>
-                        <SelectItem value="17:00">17:00</SelectItem>
-                      </SelectContent>
-                    </Select>
+                    <select
+                      id="time"
+                      value={formData.time}
+                      onChange={(e) => handleChange('time', e.target.value)}
+                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                      required
+                    >
+                      <option value="">Choisir l'heure</option>
+                      {timeSlots.map(time => (
+                        <option key={time} value={time}>{time}</option>
+                      ))}
+                    </select>
                   </div>
                 </div>
 
                 {/* Type de service */}
                 <div className="space-y-2">
                   <Label htmlFor="service">Type de consultation</Label>
-                  <Select value={formData.service} onValueChange={(value) => handleChange('service', value)}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Sélectionner le type de consultation" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="development">Développement Web/Mobile</SelectItem>
-                      <SelectItem value="data-analysis">Analyse de données</SelectItem>
-                      <SelectItem value="consulting">Conseil en informatique</SelectItem>
-                      <SelectItem value="other">Autre</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <select
+                    id="service"
+                    value={formData.service}
+                    onChange={(e) => handleChange('service', e.target.value)}
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                  >
+                    <option value="">Sélectionner le type de consultation</option>
+                    {services.map(service => (
+                      <option key={service.value} value={service.value}>{service.label}</option>
+                    ))}
+                  </select>
                 </div>
 
                 {/* Message */}
@@ -215,7 +222,7 @@ Message: ${formData.message}`;
                 {/* Bouton de soumission */}
                 <Button type="submit" className="w-full" size="lg">
                   <Calendar className="w-5 h-5 mr-2" />
-                  Demander un rendez-vous
+                  Envoyer via WhatsApp
                 </Button>
               </form>
             </CardContent>
@@ -225,7 +232,7 @@ Message: ${formData.message}`;
         {/* Note */}
         <div className="mt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            📱 Votre demande sera envoyée via WhatsApp pour une confirmation rapide
+            📱 Votre demande sera envoyée directement à Marcel via WhatsApp pour une confirmation rapide
           </p>
         </div>
       </div>
