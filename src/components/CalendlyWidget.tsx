@@ -1,8 +1,27 @@
+import { useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar, ExternalLink } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Calendar } from "lucide-react";
 
 const CalendlyWidget = () => {
+  useEffect(() => {
+    // Supprimer tout script Calendly existant pour éviter les conflits
+    const existingScripts = document.querySelectorAll('script[src*="calendly"]');
+    existingScripts.forEach(script => script.remove());
+
+    // Ajouter le script Calendly officiel
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    document.head.appendChild(script);
+
+    return () => {
+      // Cleanup si nécessaire
+      const scripts = document.querySelectorAll('script[src*="calendly"]');
+      scripts.forEach(script => script.remove());
+    };
+  }, []);
+
   return (
     <section id="calendly" className="py-20 bg-accent/20">
       <div className="container mx-auto px-4">
@@ -21,64 +40,32 @@ const CalendlyWidget = () => {
           </p>
         </div>
 
-        {/* Options de prise de rendez-vous */}
+        {/* Widget Calendly */}
         <div className="max-w-4xl mx-auto">
-          <Card className="shadow-elegant border border-border/50">
+          <Card className="shadow-elegant border border-border/50 overflow-hidden">
             <CardHeader className="text-center">
               <CardTitle className="text-2xl">Réservez votre consultation</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
-              
-              {/* Bouton direct vers Calendly */}
-              <div className="text-center">
-                <Button 
-                  size="lg" 
-                  className="bg-primary hover:bg-primary/90"
-                  asChild
-                >
-                  <a 
-                    href="https://calendly.com/assouhoaime" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2"
-                  >
-                    <Calendar className="w-5 h-5" />
-                    Prendre rendez-vous sur Calendly
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
-                </Button>
-              </div>
-
-              {/* Contact alternatif */}
-              <div className="border-t pt-6">
-                <h3 className="font-semibold text-center mb-4">Ou contactez-moi directement :</h3>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <Button variant="outline" asChild>
-                    <a href="mailto:assouhoaime@gmail.com" className="inline-flex items-center gap-2">
-                      📧 assouhoaime@gmail.com
-                    </a>
-                  </Button>
-                  <Button variant="outline" asChild>
-                    <a href="tel:+2250747783618" className="inline-flex items-center gap-2">
-                      📱 +225 07 47 78 36 18
-                    </a>
-                  </Button>
-                </div>
-              </div>
-
-              {/* Note pour la configuration */}
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                <p className="text-sm text-yellow-800">
-                  <strong>Note :</strong> Si le lien Calendly ne fonctionne pas, assurez-vous que :
-                </p>
-                <ul className="text-sm text-yellow-700 mt-2 ml-4 list-disc">
-                  <li>Votre compte Calendly est actif</li>
-                  <li>Vous avez créé au moins un type d'événement</li>
-                  <li>Votre profil public est accessible</li>
-                </ul>
-              </div>
+            <CardContent className="p-0">
+              {/* Calendly inline widget - Code HTML officiel */}
+              <div 
+                className="calendly-inline-widget" 
+                data-url="https://calendly.com/assouhoaime?hide_gdpr_banner=1&primary_color=6366f1"
+                style={{ 
+                  minWidth: '320px', 
+                  height: '700px',
+                  width: '100%'
+                }}
+              />
             </CardContent>
           </Card>
+        </div>
+
+        {/* Instructions */}
+        <div className="mt-8 text-center">
+          <p className="text-sm text-muted-foreground">
+            📅 Sélectionnez votre créneau préféré directement ci-dessus
+          </p>
         </div>
       </div>
     </section>
