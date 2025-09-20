@@ -27,9 +27,9 @@ const CalendlyWidget = () => {
               <CardTitle className="text-2xl">Réservez votre consultation</CardTitle>
             </CardHeader>
             <CardContent className="p-0">
-              {/* Iframe Calendly - Plus fiable que le widget inline */}
+              {/* Iframe Calendly avec URL d'embed correcte */}
               <iframe
-                src="https://calendly.com/assouhoaime"
+                src="https://calendly.com/assouhoaime?embed_domain=localhost&embed_type=Inline"
                 width="100%"
                 height="700"
                 frameBorder="0"
