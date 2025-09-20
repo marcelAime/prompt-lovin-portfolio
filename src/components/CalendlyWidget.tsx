@@ -2,41 +2,26 @@ import { useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar } from "lucide-react";
 
-// Déclaration TypeScript pour Calendly
-declare global {
-  interface Window {
-    Calendly?: {
-      initInlineWidget: (options: { url: string; parentElement: Element | null }) => void;
-    };
-  }
-}
-
 const CalendlyWidget = () => {
   useEffect(() => {
-    // Charger le script Calendly si pas déjà chargé
-    if (!document.querySelector('script[src*="calendly.com"]')) {
-      const script = document.createElement('script');
-      script.src = 'https://assets.calendly.com/assets/external/widget.js';
-      script.async = true;
-      script.onload = () => {
-        // Forcer l'initialisation du widget après le chargement du script
-        if (window.Calendly) {
-          window.Calendly.initInlineWidget({
-            url: 'https://calendly.com/assouhoaime',
-            parentElement: document.querySelector('.calendly-inline-widget')
-          });
-        }
-      };
-      document.head.appendChild(script);
-    } else {
-      // Si le script est déjà chargé, initialiser directement
-      if (window.Calendly) {
-        window.Calendly.initInlineWidget({
-          url: 'https://calendly.com/assouhoaime',
-          parentElement: document.querySelector('.calendly-inline-widget')
-        });
-      }
+    // Charger le script Calendly de manière simple
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    
+    // Vérifier si le script n'est pas déjà présent
+    if (!document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]')) {
+      document.body.appendChild(script);
     }
+    
+    return () => {
+      // Nettoyer le script si nécessaire
+      const existingScript = document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]');
+      if (existingScript && existingScript.parentNode) {
+        existingScript.parentNode.removeChild(existingScript);
+      }
+    };
   }, []);
 
   return (
