@@ -2,6 +2,15 @@ import { useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar } from "lucide-react";
 
+// Déclaration TypeScript pour Calendly
+declare global {
+  interface Window {
+    Calendly?: {
+      initInlineWidget: (options: { url: string; parentElement: Element | null }) => void;
+    };
+  }
+}
+
 const CalendlyWidget = () => {
   useEffect(() => {
     // Charger le script Calendly si pas déjà chargé
@@ -9,7 +18,24 @@ const CalendlyWidget = () => {
       const script = document.createElement('script');
       script.src = 'https://assets.calendly.com/assets/external/widget.js';
       script.async = true;
+      script.onload = () => {
+        // Forcer l'initialisation du widget après le chargement du script
+        if (window.Calendly) {
+          window.Calendly.initInlineWidget({
+            url: 'https://calendly.com/assouhoaime',
+            parentElement: document.querySelector('.calendly-inline-widget')
+          });
+        }
+      };
       document.head.appendChild(script);
+    } else {
+      // Si le script est déjà chargé, initialiser directement
+      if (window.Calendly) {
+        window.Calendly.initInlineWidget({
+          url: 'https://calendly.com/assouhoaime',
+          parentElement: document.querySelector('.calendly-inline-widget')
+        });
+      }
     }
   }, []);
 
