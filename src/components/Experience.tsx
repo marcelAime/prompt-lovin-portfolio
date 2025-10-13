@@ -27,6 +27,13 @@ const Experience = () => {
 
   const projects = [
     {
+      title: "AMES-CI - ONG Ambassadeurs de l'Espoir",
+      description: "Plateforme web complète pour l'ONG AMES-CI (Ambassadeurs de l'Espoir en Côte d'Ivoire). Site vitrine avec présentation des activités, galerie photo, système de dons et section actualités pour promouvoir leurs actions humanitaires.",
+      url: "https://ong-ames-ci.org/",
+      tech: ["React", "TypeScript", "Tailwind CSS", "Responsive Design"],
+      featured: true
+    },
+    {
       title: "Site ONG Santé",
       description: "Développement d'un site web pour une organisation de santé avec gestion de contenu et interface utilisateur moderne.",
       url: "https://ong-sante.siteviral.com/",
@@ -132,17 +139,17 @@ const Experience = () => {
             <span className="text-gradient"> Réalisations</span>
           </h3>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <Card key={index} className={`shadow-elegant hover:shadow-glow transition-smooth hover:scale-105 border border-border/50 ${project.featured ? 'md:col-span-2 lg:col-span-1' : ''}`}>
-                <CardContent className="p-6">
-                  <div className="flex items-start justify-between mb-4">
-                    <h4 className="text-xl font-bold text-foreground">{project.title}</h4>
-                    {project.featured && (
-                      <Badge variant="default" className="text-xs">
-                        Featured
-                      </Badge>
-                    )}
+              <Card key={index} className="shadow-premium hover:shadow-glow transition-smooth hover:scale-105 border border-border/50 group overflow-hidden">
+                <CardContent className="p-6 relative">
+                  {project.featured && (
+                    <div className="absolute top-0 right-0 bg-gradient-to-br from-primary to-primary-variant text-primary-foreground px-3 py-1 rounded-bl-lg text-xs font-semibold">
+                      ⭐ Featured
+                    </div>
+                  )}
+                  <div className="mb-4 mt-2">
+                    <h4 className="text-xl font-bold text-foreground group-hover:text-primary transition-smooth">{project.title}</h4>
                   </div>
                   
                   <p className="text-muted-foreground mb-4 leading-relaxed">

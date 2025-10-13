@@ -8,6 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
+    /* Modern premium color palette */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
@@ -17,38 +18,42 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    /* Professional tech theme */
+    /* Vibrant gradient primary */
     --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
     --primary-glow: 217 91% 70%;
+    --primary-variant: 230 89% 65%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Elegant secondary */
+    --secondary: 240 5.9% 10%;
+    --secondary-foreground: 0 0% 98%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 220 70% 15%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 217 91% 95%;
+    --accent-foreground: 217 91% 40%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 217 91% 60%;
 
-    /* Custom design tokens */
-    --hero-gradient: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 70%));
-    --tech-gradient: linear-gradient(180deg, hsl(220 70% 15%), hsl(217 91% 60%));
-    --section-gradient: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 40% 98%));
+    /* Premium gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(230 89% 65%));
+    --gradient-hero: linear-gradient(135deg, hsl(217 91% 50%) 0%, hsl(230 89% 55%) 50%, hsl(250 70% 50%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(217 91% 98%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(217 50% 98%));
     
-    /* Shadows */
-    --shadow-elegant: 0 10px 30px -10px hsl(217 91% 60% / 0.3);
-    --shadow-glow: 0 0 40px hsl(217 91% 70% / 0.4);
+    /* Elegant shadows */
+    --shadow-elegant: 0 10px 40px -10px hsl(217 91% 60% / 0.2);
+    --shadow-glow: 0 0 60px hsl(217 91% 70% / 0.35);
+    --shadow-premium: 0 20px 60px -15px hsl(217 91% 50% / 0.25);
     
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Smooth transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
     --radius: 0.75rem;
 
@@ -70,39 +75,47 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 220 70% 8%;
-    --foreground: 210 40% 98%;
+    --background: 222.2 84% 4.9%;
+    --foreground: 0 0% 98%;
 
-    --card: 220 70% 10%;
-    --card-foreground: 210 40% 98%;
+    --card: 222.2 84% 6%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 220 70% 10%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 100%;
-    --primary-glow: 217 91% 70%;
+    /* Vibrant gradient primary for dark mode */
+    --primary: 217 91% 65%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --primary-glow: 217 91% 75%;
+    --primary-variant: 230 89% 70%;
 
     --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary-foreground: 0 0% 98%;
 
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 217 91% 60%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 217 91% 15%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 217 91% 60%;
+    --ring: 217 91% 65%;
 
-    /* Dark mode gradients */
-    --hero-gradient: linear-gradient(135deg, hsl(220 70% 15%), hsl(217 91% 60%));
-    --tech-gradient: linear-gradient(180deg, hsl(220 70% 8%), hsl(220 70% 15%));
-    --section-gradient: linear-gradient(180deg, hsl(220 70% 10%), hsl(220 70% 8%));
+    /* Premium dark gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 65%), hsl(230 89% 70%));
+    --gradient-hero: linear-gradient(135deg, hsl(217 91% 40%) 0%, hsl(230 89% 45%) 50%, hsl(250 70% 40%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(222.2 84% 4.9%), hsl(217 91% 8%));
+    --gradient-card: linear-gradient(145deg, hsl(222.2 84% 6%), hsl(217 50% 8%));
+    
+    /* Elegant shadows for dark mode */
+    --shadow-elegant: 0 10px 40px -10px hsl(217 91% 20% / 0.4);
+    --shadow-glow: 0 0 60px hsl(217 91% 50% / 0.25);
+    --shadow-premium: 0 20px 60px -15px hsl(217 91% 30% / 0.35);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -130,18 +143,24 @@ All colors MUST be HSL.
 }
 
 @layer components {
+  /* Premium gradient utilities */
   .hero-gradient {
-    background: var(--hero-gradient);
+    background: var(--gradient-hero);
   }
   
   .tech-gradient {
-    background: var(--tech-gradient);
+    background: var(--gradient-primary);
   }
   
   .section-gradient {
-    background: var(--section-gradient);
+    background: var(--gradient-subtle);
+  }
+
+  .card-gradient {
+    background: var(--gradient-card);
   }
   
+  /* Premium shadow utilities */
   .shadow-elegant {
     box-shadow: var(--shadow-elegant);
   }
@@ -149,19 +168,35 @@ All colors MUST be HSL.
   .shadow-glow {
     box-shadow: var(--shadow-glow);
   }
+
+  .shadow-premium {
+    box-shadow: var(--shadow-premium);
+  }
   
+  /* Premium transition utilities */
   .transition-smooth {
     transition: var(--transition-smooth);
   }
 
+  .transition-fast {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Premium glass effect utilities */
   .glass-effect {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
