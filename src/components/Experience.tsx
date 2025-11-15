@@ -6,6 +6,69 @@ import { Briefcase, Calendar, MapPin, ExternalLink, Github } from "lucide-react"
 const Experience = () => {
   const experiences = [
     {
+      title: "Agent de collecte - Chargé de collecte de données MCLU",
+      company: "OnPoint Africa Analytics",
+      location: "Abidjan",
+      period: "Mai – Juin 2025",
+      type: "Mission",
+      description: "Collecte et analyse de données MCLU (Mobile Core Learning Unit). Mise en œuvre d'enquêtes terrain et coordination avec les équipes d'analyse.",
+      skills: ["Collecte de données", "Analyse terrain", "MCLU", "Coordination"]
+    },
+    {
+      title: "Agent de collecte - Projet IAP Nestlé Cacao Kit 4",
+      company: "Nazan Consulting",
+      location: "Abidjan",
+      period: "Juil. – Août 2025",
+      type: "Mission",
+      description: "Collecte et analyse de données auprès des producteurs de cacao pour identifier leurs besoins et soutenir le développement de pratiques agricoles durables et l'amélioration des rendements.",
+      skills: ["Collecte de données", "Enquêtes terrain", "Agriculture durable", "ODK Collect"]
+    },
+    {
+      title: "Agent de collecte - Projet Mars et S",
+      company: "Nazan Consulting",
+      location: "Abidjan",
+      period: "Fév. – Mars 2025",
+      type: "Mission",
+      description: "Collecte et analyse de données auprès des producteurs de cacao pour identifier leurs besoins et soutenir le développement de pratiques agricoles durables et l'amélioration des rendements.",
+      skills: ["Collecte de données", "Agriculture", "Enquêtes qualitatives", "SurveyCTO"]
+    },
+    {
+      title: "Agent de collecte - CAREDEFOR, MAGNUN et IRGECC",
+      company: "CARE International",
+      location: "Abidjan",
+      period: "Janv. 2025",
+      type: "Mission",
+      description: "Collecte et analyse de données auprès des ménages producteurs de cacao bénéficiaires des projets AVEC, tels que CAREDEFOR, MAGNUN et IRGECC initiés par CARE International pour améliorer leurs conditions de vie et pratiques agricoles.",
+      skills: ["Collecte de données", "Enquêtes socio-économiques", "CARE International", "Analyse statistique"]
+    },
+    {
+      title: "Agent de collecte - Enquête sur la traite des enfants",
+      company: "NORC University Chicago / The Khana Group",
+      location: "Abidjan",
+      period: "Nov. – Déc. 2024",
+      type: "Mission",
+      description: "Réalisation d'enquêtes terrain pour collecter des données qualitatives et quantitatives sur la traite des enfants. Conduite d'entretiens en respectant les normes éthiques, collaboration avec les chercheurs pour assurer la fiabilité des données et rédaction de rapports.",
+      skills: ["Enquêtes sensibles", "Éthique de recherche", "Collecte qualitative", "Rédaction de rapports"]
+    },
+    {
+      title: "Agent de collecte - Projet GDE/IECD",
+      company: "GDE / IECD",
+      location: "Abidjan",
+      period: "Oct. 2024",
+      type: "Mission",
+      description: "Collecte de données pour évaluer l'impact de la formation en plomberie sanitaire sur l'insertion professionnelle des apprenants. Réalisation d'entretiens et assurance de la qualité des données collectées.",
+      skills: ["Évaluation d'impact", "Entretiens qualitatifs", "Contrôle qualité", "Formation professionnelle"]
+    },
+    {
+      title: "Agent de collecte - Projet IAP Nestlé Cacao Kit 3",
+      company: "Nazan Consulting",
+      location: "Abidjan",
+      period: "Juil. – Sept. 2024",
+      type: "Mission",
+      description: "Collecte et analyse de données auprès des producteurs de cacao pour identifier leurs besoins et soutenir le développement de pratiques agricoles durables et l'amélioration des rendements.",
+      skills: ["Collecte de données", "Secteur cacao", "Développement durable", "Analyse de besoins"]
+    },
+    {
       title: "Développeur Web Junior / Business Developer / Community Manager",
       company: "Nkinda Sarl",
       location: "Abidjan",
@@ -13,15 +76,6 @@ const Experience = () => {
       type: "CDI",
       description: "Développement d'applications web, gestion de projets digitaux et animation de communautés en ligne. Participation active au développement commercial de l'entreprise.",
       skills: ["Développement Web", "Business Development", "Community Management", "Gestion de projet"]
-    },
-    {
-      title: "Agent de collecte de données",
-      company: "Projets Nestlé, IECD/GDE, ONPoint Africa Analytics, ANSTAT",
-      location: "Côte d'Ivoire",
-      period: "2021 – 2023",
-      type: "Missions",
-      description: "Collecte et traitement de données sur le terrain pour diverses organisations. Utilisation d'outils spécialisés pour la saisie et l'analyse de données métier.",
-      skills: ["Collecte de données", "ODK Collect", "SurveyCTO", "Analyse statistique"]
     }
   ];
 

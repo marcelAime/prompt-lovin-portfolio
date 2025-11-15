@@ -7,26 +7,20 @@ const Formation = () => {
     {
       title: "Licence Professionnelle en Informatique",
       specialization: "Option Génie Logiciel",
-      institution: "IFAD, Abidjan",
-      period: "2019 – 2020",
+      institution: "Institut de Formation Art et Développement (IFAD)",
+      location: "Abidjan, Plateau",
+      period: "Oct. 2019 – Août 2020",
       type: "Licence",
-      description: "Formation approfondie en développement logiciel, analyse et conception de systèmes informatiques."
-    },
-    {
-      title: "BTS Informatique",
-      specialization: "Développeur d'Applications",
-      institution: "IFAD, Abidjan", 
-      period: "2020 – 2021",
-      type: "BTS",
-      description: "Spécialisation en développement d'applications et programmation orientée objet."
+      description: "Compétences en développement d'applications, analyse et conception de logiciels, gestion de projets informatiques. Maîtrise des méthodologies Agile, UML et des langages Java, C++, Python. Expérience en conception de solutions logicielles et optimisation de la qualité des systèmes."
     },
     {
       title: "Baccalauréat A1",
-      specialization: "Littéraire",
+      specialization: "Sciences Mathématiques et Lettres",
       institution: "Lycée Moderne de Dimbokro",
-      period: "2018",
+      location: "Dimbokro",
+      period: "Sept. 2016 – Juil. 2017",
       type: "Baccalauréat",
-      description: "Formation générale avec mention en littérature et sciences humaines."
+      description: "Formation généraliste en sciences mathématiques et lettres, avec des compétences en analyse, résolution de problèmes et travail autonome."
     }
   ];
 
