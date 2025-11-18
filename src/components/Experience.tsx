@@ -88,6 +88,13 @@ const Experience = () => {
       featured: true
     },
     {
+      title: "FaciLyfe - Plateforme de Services",
+      description: "Plateforme web complète de mise en relation pour la location de logements et l'emploi de personnel domestique à Abidjan. Système de publication d'annonces, recherche avancée et gestion de profils pour faciliter les connexions entre particuliers et professionnels.",
+      url: "https://facilyfe.africwork.com/",
+      tech: ["React", "TypeScript", "Supabase", "Tailwind CSS"],
+      featured: true
+    },
+    {
       title: "Site ONG Santé",
       description: "Développement d'un site web pour une organisation de santé avec gestion de contenu et interface utilisateur moderne.",
       url: "https://ong-sante.siteviral.com/",
